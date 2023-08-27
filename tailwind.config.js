@@ -18,6 +18,9 @@ export default {
       },
       fontFamily: {
         sans: ['Roboto', 'sans-serif', ...defaultTheme.fontFamily.sans],
+      },
+      boxShadow: {
+        'cardShadow': '0px 8px 16px 0px rgba(0, 0, 0, 0.08)',
       }
     },
   },
