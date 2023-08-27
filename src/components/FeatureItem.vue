@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue';
 import IconCheck from '@/components/icons/IconCheck.vue';
+
 defineProps({
   text: {
     type: String,
@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <li class="flex items-center gap-x-2">
+  <div class="flex items-center gap-x-2">
     <IconCheck :fill="'#00CC33'"></IconCheck> 
-    <p :class="['text-sm', this.params]">{{ text }}</p></li>
+    <p :class="['text-sm', this.params]">{{ text }}</p></div>
 </template>
