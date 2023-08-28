@@ -4,6 +4,8 @@ import BreadcrumbsItem from '@/components/BreadcrumbsItem.vue';
 import SwitcherItem from '@/components/SwitcherItem.vue';
 import cards from './cards';
 
+import { mapGetters } from 'vuex'
+
 const breadcrumbsAfter = ["after:content-['→']", "after:ml-2", "after:text-textGrayLight"];
 const breadcrumbsDefault = ['text-textGrayLight', 'hover:text-textGrayDark', 'transition', 'ease-in-out', 'duration-300'];
 const breadcrumbsActive = ['text-accentLight', 'cursor-default'];
@@ -26,6 +28,24 @@ const breadcrumbs = [
   {name: 'Соцсети', class: tabsDefault,},
   {name: 'Мессенджеры', class: tabsDefault},
   ]
+  
+</script>
+
+<script>
+  export default {
+  data() {
+    return {
+      email: '',
+    }
+  },
+
+  methods: {
+    sendForm: function (e) {
+    e.preventDefault();
+    console.log({email: this.email, subscriptions: this.$store.getters.subscription});
+  }
+  }
+}
 </script>
 
 <template>
@@ -38,8 +58,8 @@ const breadcrumbs = [
     <div class="flex flex-col py-12 bg-backgroundSecond rounded-l-2xl rounded-b-2xl">
       <div class="px-12">
         <p class="mb-6 text-2xl text-center font-medium tracking-[-0.24px]">Выберите рассылки, которые подходят именно вам</p>
-        <form class="flex mb-4">
-          <input class="p-4 rounded-l-xl w-full" type="email" placeholder="Электронная почта">
+        <form class="flex mb-4" @submit="sendForm">
+          <input class="p-4 rounded-l-xl w-full" type="email" placeholder="Электронная почта" required v-model="this.email">
           <div class="bg-white rounded-r-[100px]"><button class="right-0 inline-block px-8 py-4 bg-active text-white rounded-[100px] hover:brightness-125">Подписаться</button></div>
         </form>
         <div class="flex items-center gap-2">
