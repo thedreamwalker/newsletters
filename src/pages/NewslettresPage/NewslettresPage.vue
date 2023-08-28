@@ -17,9 +17,12 @@ const breadcrumbs = [
   const tabsDefault = `relative active:text-accentLight pb-4 active:font-medium
       active:after:absolute active:after:block active:after:content-[''] active:after:bg-accentLight active:after:w-full active:after:h-0.5 active:after:bottom-0
       hover:after:absolute hover:after:block hover:after:content-[''] hover:after:bg-accentLight hover:after:w-full hover:after:h-0.5 hover:after:bottom-0`;
+  const tabsActive = `relative text-accentLight pb-4 font-medium
+      after:absolute after:block after:content-[''] after:bg-accentLight after:w-full after:h-0.5 after:bottom-0
+      hover:after:absolute hover:after:block hover:after:content-[''] hover:after:bg-accentLight hover:after:w-full hover:after:h-0.5 hover:after:bottom-0`;
 
   const tabs = [
-  {name: 'Рассылки', class: tabsDefault,},
+  {name: 'Рассылки', class: tabsActive,},
   {name: 'Соцсети', class: tabsDefault,},
   {name: 'Мессенджеры', class: tabsDefault},
   ]
@@ -30,7 +33,7 @@ const breadcrumbs = [
     <BreadcrumbsItem :breadcrumbs="breadcrumbs"/>
   <h1 class="mb-6 text-mainTitle font-medium text-center">Подписки «Клерка»</h1>
     <ul class="flex gap-6 justify-center text-textGrayDark">
-      <li v-for="tab in tabs" :class="tab.class"><button>{{ tab.name }}</button></li>
+      <li v-for="tab in tabs" :class="tab.class"><button type="button">{{ tab.name }}</button></li>
     </ul>
     <div class="flex flex-col py-12 bg-backgroundSecond rounded-l-2xl rounded-b-2xl">
       <div class="px-12">
