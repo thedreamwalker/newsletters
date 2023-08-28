@@ -9,6 +9,29 @@ import { useFecth } from '@/api/api.js';
 
 import { mapGetters } from 'vuex'
 
+
+  
+</script>
+
+<script>
+  export default {
+  data() {
+    return {
+      email: '',
+    }
+  },
+
+  methods: {
+    sendForm: function (e) {
+    e.preventDefault();
+    const obj = {email: this.email, subscriptions: this.$store.getters.subscription};
+    console.log('отправлен объект');
+    console.log(obj);
+    useFecth('POST', obj);
+  }
+  }
+}
+
 const breadcrumbsAfter = ["after:content-['→']", "after:ml-2", "after:text-textGrayLight"];
 const breadcrumbsDefault = ['text-textGrayLight', 'hover:text-textGrayDark', 'transition', 'ease-in-out', 'duration-300'];
 const breadcrumbsActive = ['text-accentLight', 'cursor-default'];
@@ -33,25 +56,6 @@ const breadcrumbs = [
   ]
 
   const isMobile = window.innerWidth < 768;
-  
-</script>
-
-<script>
-  export default {
-  data() {
-    return {
-      email: '',
-    }
-  },
-
-  methods: {
-    sendForm: function (e) {
-    e.preventDefault();
-    const obj = {email: this.email, subscriptions: this.$store.getters.subscription};
-    useFecth('POST', obj);
-  }
-  }
-}
 </script>
 
 <template>
@@ -65,7 +69,7 @@ const breadcrumbs = [
       <div class="px-12">
         <p class="mb-6 text-2xl text-center font-medium tracking-[-0.24px]">Выберите рассылки, которые подходят именно вам</p>
         <form class="flex mb-4" @submit="sendForm">
-          <input class="p-4 rounded-l-xl w-full" type="email" placeholder="Электронная почта" required v-model="this.email">
+          <input class="p-4 rounded-l-xl w-full" type="email" placeholder="Электронная почта" required v-model="email">
           <div v-if="isMobile" class="bg-white rounded-r-full flex align-middle"><button class="flex justify-center items-center right-0 w-14 h-14 bg-active text-white rounded-full hover:brightness-125"><IconArrow/></button></div>
           <div v-else="isMobile" class="bg-white rounded-r-[100px]"><button class="right-0 inline-block px-8 py-4 bg-active text-white rounded-[100px] hover:brightness-125">Подписаться</button></div>
         </form>

@@ -1,6 +1,8 @@
-<script setup>
+<script>
 import { mapGetters, mapActions } from 'vuex'
-defineProps({
+
+export default {
+  props: {
   type: {
     type: String,
     required: true,
@@ -15,15 +17,13 @@ defineProps({
     required: false,
     default: 'h-6'
   },
-})
-</script>
+},
 
-<script>
-export default {
   data() {
     return {
       isActive: false,
       round: this.height.split('-')[1] - 1,
+      isMobile: false,
     }
   },
 

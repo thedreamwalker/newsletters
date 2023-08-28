@@ -4,6 +4,6 @@ import IconLogo from '@/components/icons/IconLogo.vue';
 
 <template>
   <header class="mt-12 mb-6">
-    <a href="/"><IconLogo></IconLogo></a>
+    <a href="./"><IconLogo></IconLogo></a>
   </header>
 </template>

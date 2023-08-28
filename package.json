@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build --watch",
+    "build": "vite build",
     "preview": "vite preview",
-    "start": "npx tailwindcss -i ./src/input.css -o ./dist/style.css --watch"
+    "start": "npx tailwindcss -i ./src/style.css -o ./dist/style.css --watch"
   },
   "dependencies": {
     "vue": "^3.3.4",

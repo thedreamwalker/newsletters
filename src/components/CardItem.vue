@@ -1,8 +1,9 @@
-<script setup>
+<script>
 import FeatureItem from './FeatureItem.vue';
 import SwitcherItem from './SwitcherItem.vue';
 
-defineProps({
+export default {
+  props: {
   type: {
     type: String,
     required: true
@@ -31,7 +32,13 @@ defineProps({
     type: Number,
     required: true
   }
-})
+},
+
+components: {
+    FeatureItem,
+    SwitcherItem
+  }
+}
 </script>
 
 <template>
