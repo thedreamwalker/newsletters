@@ -1,9 +1,5 @@
 <script setup>
 defineProps({
-  count: {
-    type: Number,
-    required: true
-  },
   width: {
     type: String,
     required: false,
@@ -22,22 +18,20 @@ export default {
   data() {
     return {
       isActive: false,
+      round: this.height.split('-')[1] - 1,
     }
   },
   computed: {
     switchStyle() {
       return this.isActive ? ['bg-active', 'justify-end'] : ['bg-inactive', 'justify-start'];
     },
-    roundSize() {
-      const num = Number(this.height.split('-')[1]) - 1;
-      console.log(typeof(`w-${num.toString()}`))
-      return `w-${num.toString()} h-${num.toString()}`;
+    roundStyle() {
+      return this.isActive ? ['translate-x-[0.05rem]'] : ['translate-x-0'];
     }
   },
 
   methods: {
 	  toggle() {
-      console.log('сколько')
     	this.isActive ? this.isActive = false : this.isActive = true;
   	}
 	}
@@ -45,8 +39,8 @@ export default {
 </script>
 
 <template>
-  <label :class="['flex', this.width, this.height, 'p-px', ' rounded-xl', 'cursor-pointer', 'items-center', switchStyle]" @change="toggle">
+  <label :class="['flex', this.width, this.height, 'p-px', ' rounded-xl', 'cursor-pointer', 'items-center', 'hover:shadow-2lg', 'transition', 'ease-in-out', 'duration-500', switchStyle]" @change="toggle">
     <input class="hidden" type="checkbox">
-    <span :class="['inline-block', 'bg-white', 'rounded-full', roundSize]"></span>
+    <span :class="['inline-block', 'bg-white', 'rounded-full', this.round < 5 ? 'w-3 h-3' : 'w-5 h-5', 'transition', 'ease-in-out', 'duration-900', roundStyle]"></span>
   </label>
 </template>
