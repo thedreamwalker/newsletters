@@ -3,6 +3,10 @@ import FeatureItem from './FeatureItem.vue';
 import SwitcherItem from './SwitcherItem.vue';
 
 defineProps({
+  type: {
+    type: String,
+    required: true
+  },
   supTitle: {
     type: String,
     required: true
@@ -46,7 +50,7 @@ defineProps({
       </li>
     </ul>
     <div class="flex items-center gap-2">
-      <SwitcherItem :count="this.count"></SwitcherItem>
+      <SwitcherItem :type="this.type" :count="this.count"></SwitcherItem>
       <p>Уже получает {{this.count}} человек</p>
     </div>
     

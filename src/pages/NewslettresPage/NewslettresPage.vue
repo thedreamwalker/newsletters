@@ -43,16 +43,15 @@ const breadcrumbs = [
           <div class="bg-white rounded-r-[100px]"><button class="right-0 inline-block px-8 py-4 bg-active text-white rounded-[100px] hover:brightness-125">Подписаться</button></div>
         </form>
         <div class="flex items-center gap-2">
-          <SwitcherItem :width="'w-8'" :height="'h-4'" />
+          <SwitcherItem :type="'all'" :width="'w-8'" :height="'h-4'" />
           <p class="text-sm">Подписаться на все рассылки</p>
         </div>
       </div>
       <ul class="flex flex-wrap gap-6 px-6 pt-8">
         <li v-for="card in cards">
-          <CardItem :supTitle="card.supTitle" :title="card.title" :description="card.description" :image="card.image" :featureList="card.featureList" :count="card.count"></CardItem>
+          <CardItem :type="card.type" :supTitle="card.supTitle" :title="card.title" :description="card.description" :image="card.image" :featureList="card.featureList" :count="card.count"></CardItem>
         </li>
       </ul>
-    
     </div>
   </main>
 </template>
