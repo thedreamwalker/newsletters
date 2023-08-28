@@ -11,7 +11,7 @@ export default {
     extend: {
       fontSize: {
         sub: ['13px', '16px'],
-        mainTitle: ['56px', '72px']
+        mainTitle: ['3.5rem', '1']
       },
       colors: {
         textGrayLight: '#999999',

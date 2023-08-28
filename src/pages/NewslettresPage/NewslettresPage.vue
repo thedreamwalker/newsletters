@@ -3,6 +3,9 @@ import CardItem from '@/components/CardItem.vue';
 import BreadcrumbsItem from '@/components/BreadcrumbsItem.vue';
 import SwitcherItem from '@/components/SwitcherItem.vue';
 import cards from './cards';
+import IconArrow from '@/components/icons/IconArrow.vue';
+
+import { useFecth } from '@/api/api.js';
 
 import { mapGetters } from 'vuex'
 
@@ -28,6 +31,8 @@ const breadcrumbs = [
   {name: 'Соцсети', class: tabsDefault,},
   {name: 'Мессенджеры', class: tabsDefault},
   ]
+
+  const isMobile = window.innerWidth < 768;
   
 </script>
 
@@ -42,7 +47,8 @@ const breadcrumbs = [
   methods: {
     sendForm: function (e) {
     e.preventDefault();
-    console.log({email: this.email, subscriptions: this.$store.getters.subscription});
+    const obj = {email: this.email, subscriptions: this.$store.getters.subscription};
+    useFecth('POST', obj);
   }
   }
 }
@@ -51,7 +57,7 @@ const breadcrumbs = [
 <template>
   <main>
     <BreadcrumbsItem :breadcrumbs="breadcrumbs"/>
-  <h1 class="mb-6 text-mainTitle font-medium text-center">Подписки «Клерка»</h1>
+  <h1 class="mb-6 text-mainTitle sm:text-3xl font-medium text-center">Подписки «Клерка»</h1>
     <ul class="flex gap-6 justify-center text-textGrayDark">
       <li v-for="tab in tabs" :class="tab.class"><button type="button">{{ tab.name }}</button></li>
     </ul>
@@ -60,14 +66,15 @@ const breadcrumbs = [
         <p class="mb-6 text-2xl text-center font-medium tracking-[-0.24px]">Выберите рассылки, которые подходят именно вам</p>
         <form class="flex mb-4" @submit="sendForm">
           <input class="p-4 rounded-l-xl w-full" type="email" placeholder="Электронная почта" required v-model="this.email">
-          <div class="bg-white rounded-r-[100px]"><button class="right-0 inline-block px-8 py-4 bg-active text-white rounded-[100px] hover:brightness-125">Подписаться</button></div>
+          <div v-if="isMobile" class="bg-white rounded-r-full flex align-middle"><button class="flex justify-center items-center right-0 w-14 h-14 bg-active text-white rounded-full hover:brightness-125"><IconArrow/></button></div>
+          <div v-else="isMobile" class="bg-white rounded-r-[100px]"><button class="right-0 inline-block px-8 py-4 bg-active text-white rounded-[100px] hover:brightness-125">Подписаться</button></div>
         </form>
         <div class="flex items-center gap-2">
           <SwitcherItem :type="'all'" :width="'w-8'" :height="'h-4'" />
           <p class="text-sm">Подписаться на все рассылки</p>
         </div>
       </div>
-      <ul class="flex flex-wrap gap-6 px-6 pt-8">
+      <ul class="flex justify-center flex-wrap gap-6 px-6 pt-8">
         <li v-for="card in cards">
           <CardItem :type="card.type" :supTitle="card.supTitle" :title="card.title" :description="card.description" :image="card.image" :featureList="card.featureList" :count="card.count"></CardItem>
         </li>

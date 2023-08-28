@@ -34,4 +34,8 @@
     @apply my-0;
     @apply mx-auto;
   }
+
+  h1 {
+    @apply text-mainTitle;
+  }
 }
