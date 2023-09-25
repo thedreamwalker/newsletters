@@ -28,7 +28,7 @@ const store = createStore({
     }
   },
   actions: {
-		setSubscription: ({dispatch, commit}, value) => {
+		setSubscription: ({commit}, value) => {
       commit(mutation.SET_SUBSCRIPTION, value)
     }
 	}
