@@ -63,7 +63,7 @@ const breadcrumbs = [
     <BreadcrumbsItem :breadcrumbs="breadcrumbs"/>
   <h1 class="mb-6 text-mainTitle sm:text-3xl font-medium text-center">Подписки «Клерка»</h1>
     <ul class="flex gap-6 justify-center text-textGrayDark">
-      <li v-for="tab in tabs" :class="tab.class"><button type="button">{{ tab.name }}</button></li>
+      <li v-for="tab in tabs" :key="tab.name" :class="tab.class"><button type="button">{{ tab.name }}</button></li>
     </ul>
     <div class="flex flex-col py-12 bg-backgroundSecond rounded-l-2xl rounded-b-2xl">
       <div class="px-12">
@@ -79,7 +79,7 @@ const breadcrumbs = [
         </div>
       </div>
       <ul class="flex justify-center flex-wrap gap-6 px-6 pt-8">
-        <li v-for="card in cards">
+        <li v-for="card in cards" :key="card.title">
           <CardItem :type="card.type" :supTitle="card.supTitle" :title="card.title" :description="card.description" :image="card.image" :featureList="card.featureList" :count="card.count"></CardItem>
         </li>
       </ul>

@@ -52,7 +52,7 @@ components: {
       <img class="max-w-20 sm:max-w-10 max-h-20 sm:max-h-10 rounded-lg" :src="image" :alt="title">
     </div>
     <ul class="mb-4">
-      <li v-for="item in featureList" class="mb-2">
+      <li v-for="item in featureList" :key="item.text" class="mb-2">
         <FeatureItem :text="item.text" :params="item.params"></FeatureItem>
       </li>
     </ul>
