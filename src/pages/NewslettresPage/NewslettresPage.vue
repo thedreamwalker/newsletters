@@ -5,7 +5,7 @@ import SwitcherItem from '@/components/SwitcherItem.vue';
 import cards from './cards';
 import IconArrow from '@/components/icons/IconArrow.vue';
 
-import { useFecth } from '@/api/api.js';
+import { useFetch } from '@/api/api.js';
 
 import { mapGetters } from 'vuex'
 
@@ -27,7 +27,7 @@ import { mapGetters } from 'vuex'
     const obj = {email: this.email, subscriptions: this.$store.getters.subscription};
     console.log('отправлен объект');
     console.log(obj);
-    useFecth('POST', obj);
+    useFetch('POST', obj);
   }
   }
 }
