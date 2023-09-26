@@ -1,27 +1,22 @@
 const url = 'http://sometest/api';
 
-const useFecth = async (request, obj) => {
+const useFetch = async (request, obj) => {
 
-  const sendFetch = () => {
-
-    fetch(`${url}`, {
+  try {
+    let response = await fetch(`${url}`, {
       method: request,
       headers: {
         'Content-type': 'application/json'
       },
-
       body: JSON.stringify(obj)
-  })
-      .then(response => {
-          return response.json()
-      })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => console.log('er', error));
-  }
+    });
 
-  sendFetch(request, obj);
+    let data = await response.json();
+
+    console.log(data);
+  } catch(error) {
+    console.error(error);
+  }
 }
 
-export {useFecth};
+export {useFetch as useFetch};
