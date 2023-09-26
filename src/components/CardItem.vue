@@ -34,6 +34,12 @@ export default {
   }
 },
 
+computed: {
+    countSubscription() {
+      return `${String(this.count).slice(0, -3)} ${String(this.count).slice(-3)}`;
+    }
+  },
+
 components: {
     FeatureItem,
     SwitcherItem
@@ -53,12 +59,12 @@ components: {
     </div>
     <ul class="mb-4">
       <li v-for="item in featureList" :key="item.text" class="mb-2">
-        <FeatureItem :text="item.text" :params="item.params"></FeatureItem>
+        <FeatureItem :text="item.text" :params="item.params" />
       </li>
     </ul>
     <div class="flex items-center gap-2">
-      <SwitcherItem :type="this.type" :count="this.count"></SwitcherItem>
-      <p>Уже получает {{`${String(this.count).slice(0, -3)} ${String(this.count).slice(-3)}`}} человек</p>
+      <SwitcherItem :type="type" :count="count" />
+      <p>Уже получает {{countSubscription}} человек</p>
     </div>
   </div>
 </template>
