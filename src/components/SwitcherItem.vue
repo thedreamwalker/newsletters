@@ -25,24 +25,18 @@ export default {
   }
 },
 
-  data() {
-    return {
-      isMobile: false,
+  computed: {
+    ...mapState(['subscription']),
+    ...mapGetters(['allSubscription']),
+
+    switchStyle() {
+      return this.isActive ? ['bg-active', 'justify-end'] : ['bg-inactive', 'justify-start'];
+    },
+    roundStyle() {
+      return this.isActive ? ['translate-x-[0.05rem]'] : ['translate-x-0'];
     }
   },
-
-    computed: {
-      ...mapState(['subscription']),
-      ...mapGetters(['allSubscription']),
-
-      switchStyle() {
-        return this.isActive ? ['bg-active', 'justify-end'] : ['bg-inactive', 'justify-start'];
-      },
-      roundStyle() {
-        return this.isActive ? ['translate-x-[0.05rem]'] : ['translate-x-0'];
-      }
-    },
-	}
+}
 </script>
 
 <template>

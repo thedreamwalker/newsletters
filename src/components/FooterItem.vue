@@ -1,9 +1,9 @@
 <script setup>
-import IconSmile from '@/components/icons/IconSmile.vue';
+import IconSmile from '@/assets/img/smile.svg?component';
 </script>
 
 <template>
   <footer class="my-12">
-    <IconSmile></IconSmile>
+    <IconSmile />
   </footer>
 </template>

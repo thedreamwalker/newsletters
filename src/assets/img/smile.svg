@@ -1,4 +1,3 @@
-<template>
   <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="196" height="48" viewBox="0 0 196 48" fill="none">
     <path d="M16.0993 7.74633H0.93335V4.49787H16.0993V7.74633Z" fill="black"/>
     <path d="M19.8005 4.24799H23.7726L37.4942 40.1628H33.5221L19.8005 4.24799Z" fill="black"/>
@@ -10,4 +9,3 @@
     <path d="M161.643 40.1628H158.055L171.776 4.24799H175.342L161.643 40.1628Z" fill="black"/>
     <path d="M195.067 7.74633H179.901V4.49787H195.067V7.74633Z" fill="black"/>
 </svg>
-</template>

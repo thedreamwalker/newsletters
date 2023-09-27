@@ -4,12 +4,14 @@ import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 import eslint from 'vite-plugin-eslint';
+import svgLoader from 'vite-svg-loader'
 
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    svgLoader(),
     eslint(),
   ],
   resolve: {

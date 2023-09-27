@@ -3,7 +3,7 @@ import CardItem from '@/components/CardItem.vue';
 import BreadcrumbsItem from '@/components/BreadcrumbsItem.vue';
 import SwitcherItem from '@/components/SwitcherItem.vue';
 import cards from './cards';
-import IconArrow from '@/components/icons/IconArrow.vue';
+import IconArrow from '@/assets/img/arrow.svg?component';
 
 import { useFetch } from '@/api/api.js';
 

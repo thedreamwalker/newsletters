@@ -1,5 +1,5 @@
 <script>
-import IconCheck from './icons/IconCheck.vue';
+import IconCheck from '@/assets/img/check.svg?component';
 
 export default {
   props: {
@@ -22,6 +22,6 @@ export default {
 
 <template>
   <div class="flex items-center gap-x-2">
-    <IconCheck :fill="'#00CC33'"></IconCheck> 
+    <IconCheck :fill="'#00CC33'" />
     <p :class="['text-sm', params]">{{ text }}</p></div>
 </template>
