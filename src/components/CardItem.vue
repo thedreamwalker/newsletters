@@ -69,7 +69,7 @@ components: {
       </li>
     </ul>
     <div class="flex items-center gap-2">
-      <SwitcherItem :isActive="this.subscribed" :count="count" @click.prevent="toggleSubscription" />
+      <SwitcherItem :isActive="subscribed" :count="count" @click.prevent="toggleSubscription" />
       <p>Уже получает {{countSubscription}} человек</p>
     </div>
   </div>

@@ -88,8 +88,8 @@ const breadcrumbs = [
             :width="'w-8'" 
             :height="'h-4'" 
             :round="'w-3 h-3'"
-            :isActive="this.allSubscription" 
-            @click.prevent="changeAllSubscription(!this.allSubscription)"
+            :isActive="allSubscription" 
+            @click.prevent="changeAllSubscription(!allSubscription)"
           />
           <p class="text-sm">Подписаться на все рассылки</p>
         </div>
@@ -103,7 +103,7 @@ const breadcrumbs = [
             :image="card.image" 
             :featureList="card.featureList" 
             :count="card.count" 
-            :subscribed="this.subscription[card.type]" 
+            :subscribed="subscription[card.type]" 
             @changed="value => setSubscription({[card.type]: value})"
           />
         </li>

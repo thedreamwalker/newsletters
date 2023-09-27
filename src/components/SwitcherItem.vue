@@ -46,8 +46,8 @@ export default {
 </script>
 
 <template>
-  <label :class="['flex', this.width, this.height, 'p-px', ' rounded-xl', 'cursor-pointer', 'items-center', 'hover:shadow-2lg', 'transition', 'ease-in-out', 'duration-500', switchStyle]" @change="toggle">
+  <label :class="['flex', width, height, 'p-px', ' rounded-xl', 'cursor-pointer', 'items-center', 'hover:shadow-2lg', 'transition', 'ease-in-out', 'duration-500', switchStyle]" @change="toggle">
     <input class="hidden" type="checkbox">
-    <span :class="['inline-block', 'bg-white', 'rounded-full', this.round, 'transition', 'ease-in-out', 'duration-900', roundStyle]"></span>
+    <span :class="['inline-block', 'bg-white', 'rounded-full', round, 'transition', 'ease-in-out', 'duration-900', roundStyle]"></span>
   </label>
 </template>
