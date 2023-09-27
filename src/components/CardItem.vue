@@ -4,10 +4,6 @@ import SwitcherItem from './SwitcherItem.vue';
 
 export default {
   props: {
-  type: {
-    type: String,
-    required: true
-  },
   supTitle: {
     type: String,
     required: true
@@ -31,12 +27,22 @@ export default {
   count: {
     type: Number,
     required: true
+  },
+  subscribed: {
+    type: Boolean,
+    required: true
   }
 },
 
 computed: {
     countSubscription() {
       return `${String(this.count).slice(0, -3)} ${String(this.count).slice(-3)}`;
+    }
+  },
+
+  methods: {
+    toggleSubscription() {
+      this.$emit('changed', !this.subscribed);
     }
   },
 
@@ -63,7 +69,7 @@ components: {
       </li>
     </ul>
     <div class="flex items-center gap-2">
-      <SwitcherItem :type="type" :count="count" />
+      <SwitcherItem :isActive="this.subscribed" :count="count" @click.prevent="toggleSubscription" />
       <p>Уже получает {{countSubscription}} человек</p>
     </div>
   </div>

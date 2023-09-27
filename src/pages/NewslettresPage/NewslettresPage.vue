@@ -7,10 +7,7 @@ import IconArrow from '@/components/icons/IconArrow.vue';
 
 import { useFetch } from '@/api/api.js';
 
-import { mapGetters } from 'vuex'
-
-
-  
+import { mapState, mapGetters, mapActions } from 'vuex';
 </script>
 
 <script>
@@ -21,14 +18,27 @@ import { mapGetters } from 'vuex'
     }
   },
 
+  computed: {
+    ...mapState(['subscription']),
+    ...mapGetters(['allSubscription']),
+  },
+
   methods: {
+    ...mapActions(['setSubscription']),
+
     sendForm: function (e) {
-    e.preventDefault();
-    const obj = {email: this.email, subscriptions: this.$store.getters.subscription};
-    console.log('отправлен объект');
-    console.log(obj);
-    useFetch('POST', obj);
-  }
+      e.preventDefault();
+      const obj = {email: this.email, subscriptions: this.$store.getters.subscription};
+      console.log('отправлен объект');
+      console.log(obj);
+      useFetch('POST', obj);
+    },
+
+    changeAllSubscription(value) {
+      for (let typeSubscription in this.subscription) {
+        this.setSubscription({[typeSubscription]: value});
+      }
+    }
   }
 }
 
@@ -74,13 +84,28 @@ const breadcrumbs = [
           <div v-else="isMobile" class="bg-white rounded-r-[100px]"><button class="right-0 inline-block px-8 py-4 bg-active text-white rounded-[100px] hover:brightness-125">Подписаться</button></div>
         </form>
         <div class="flex items-center gap-2">
-          <SwitcherItem :type="'all'" :width="'w-8'" :height="'h-4'" />
+          <SwitcherItem 
+            :width="'w-8'" 
+            :height="'h-4'" 
+            :round="'w-3 h-3'"
+            :isActive="this.allSubscription" 
+            @click.prevent="changeAllSubscription(!this.allSubscription)"
+          />
           <p class="text-sm">Подписаться на все рассылки</p>
         </div>
       </div>
       <ul class="flex justify-center flex-wrap gap-6 px-6 pt-8">
         <li v-for="card in cards" :key="card.title">
-          <CardItem :type="card.type" :supTitle="card.supTitle" :title="card.title" :description="card.description" :image="card.image" :featureList="card.featureList" :count="card.count"></CardItem>
+          <CardItem 
+            :supTitle="card.supTitle" 
+            :title="card.title" 
+            :description="card.description" 
+            :image="card.image" 
+            :featureList="card.featureList" 
+            :count="card.count" 
+            :subscribed="this.subscription[card.type]" 
+            @changed="value => setSubscription({[card.type]: value})"
+          />
         </li>
       </ul>
     </div>

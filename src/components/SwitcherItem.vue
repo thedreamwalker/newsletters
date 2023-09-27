@@ -1,10 +1,10 @@
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   props: {
-  type: {
-    type: String,
+  isActive: {
+    type: Boolean,
     required: true,
   },
   width: {
@@ -27,45 +27,21 @@ export default {
 
   data() {
     return {
-      isActive: false,
       isMobile: false,
     }
   },
 
-  mounted() {
-    if (this.type === 'all' && this.subscription.morning && this.subscription.evening && this.subscription.sale && this.subscription.free) {this.setSubscription({[this.type]: true})};
-  },
+    computed: {
+      ...mapState(['subscription']),
+      ...mapGetters(['allSubscription']),
 
-  computed: {
-    ...mapGetters(['subscription']),
-
-    switchStyle() {
-      return this.subscription[this.type] ? ['bg-active', 'justify-end'] : ['bg-inactive', 'justify-start'];
-    },
-    roundStyle() {
-      return this.subscription[this.type] ? ['translate-x-[0.05rem]'] : ['translate-x-0'];
-    }
-  },
-
-  methods: {
-    ...mapActions(['setSubscription']),
-
-	  toggle() {
-      // console.log(this.$store.getters.subscription);
-
-      if (this.type === 'all') {
-        this.setSubscription({
-          all: !this.subscription[this.type],
-          morning: !this.subscription[this.type],
-          evening: !this.subscription[this.type],
-          sale: !this.subscription[this.type],
-          free: !this.subscription[this.type]
-        })} else {
-        this.setSubscription({[this.type]: !this.subscription[this.type]});
-        (this.subscription.morning && this.subscription.evening && this.subscription.sale && this.subscription.free) ? this.setSubscription({['all']: true}) : this.setSubscription({['all']: false}) ;
-        }
+      switchStyle() {
+        return this.isActive ? ['bg-active', 'justify-end'] : ['bg-inactive', 'justify-start'];
+      },
+      roundStyle() {
+        return this.isActive ? ['translate-x-[0.05rem]'] : ['translate-x-0'];
       }
-  	}
+    },
 	}
 </script>
 
