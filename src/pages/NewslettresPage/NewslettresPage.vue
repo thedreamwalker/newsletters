@@ -6,6 +6,7 @@ import cards from './cards';
 import IconArrow from '@/assets/img/arrow.svg?component';
 
 import { useFetch } from '@/api/api.js';
+import { isMobile } from '@/utils/index.js'
 
 import { mapState, mapGetters, mapActions } from 'vuex';
 </script>
@@ -63,8 +64,6 @@ const breadcrumbs = [
   {name: 'Соцсети', class: tabsDefault,},
   {name: 'Мессенджеры', class: tabsDefault},
   ]
-
-  const isMobile = window.innerWidth < 768;
 </script>
 
 <template>
