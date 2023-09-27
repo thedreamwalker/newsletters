@@ -17,12 +17,17 @@ export default {
     required: false,
     default: 'h-6'
   },
+
+  round: {
+    type: String,
+    required: false,
+    default: 'w-5 h-5'
+  }
 },
 
   data() {
     return {
       isActive: false,
-      round: this.height.split('-')[1] - 1,
       isMobile: false,
     }
   },
@@ -67,6 +72,6 @@ export default {
 <template>
   <label :class="['flex', this.width, this.height, 'p-px', ' rounded-xl', 'cursor-pointer', 'items-center', 'hover:shadow-2lg', 'transition', 'ease-in-out', 'duration-500', switchStyle]" @change="toggle">
     <input class="hidden" type="checkbox">
-    <span :class="['inline-block', 'bg-white', 'rounded-full', this.round < 5 ? 'w-3 h-3' : 'w-5 h-5', 'transition', 'ease-in-out', 'duration-900', roundStyle]"></span>
+    <span :class="['inline-block', 'bg-white', 'rounded-full', this.round, 'transition', 'ease-in-out', 'duration-900', roundStyle]"></span>
   </label>
 </template>
