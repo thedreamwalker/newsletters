@@ -1,67 +1,75 @@
 <script>
-import FeatureItem from './FeatureItem.vue';
-import SwitcherItem from './SwitcherItem.vue';
+import FeatureItem from './FeatureItem.vue'
+import SwitcherItem from './SwitcherItem.vue'
 
 export default {
-  props: {
-  supTitle: {
-    type: String,
-    required: true
+  components: {
+    FeatureItem,
+    SwitcherItem
   },
-  title: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  image: {
-    type: String,
-    required: true
-  },
-  featureList: {
-    type: Array,
-    required: true
-  },
-  count: {
-    type: Number,
-    required: true
-  },
-  subscribed: {
-    type: Boolean,
-    required: true
-  }
-},
 
-computed: {
+  props: {
+    supTitle: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true
+    },
+    featureList: {
+      type: Array,
+      required: true
+    },
+    count: {
+      type: Number,
+      required: true
+    },
+    subscribed: {
+      type: Boolean,
+      required: true
+    }
+  },
+
+  emits: ['changed'],
+
+  computed: {
     countSubscription() {
-      return `${String(this.count).slice(0, -3)} ${String(this.count).slice(-3)}`;
+      return `${String(this.count).slice(0, -3)} ${String(this.count).slice(
+        -3
+      )}`
     }
   },
 
   methods: {
     toggleSubscription() {
-      this.$emit('changed', !this.subscribed);
+      this.$emit('changed', !this.subscribed)
     }
-  },
-
-components: {
-    FeatureItem,
-    SwitcherItem
   }
 }
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl shadow-2lg p-6">
+  <div class="rounded-2xl bg-white p-6 shadow-2lg">
     <div class="flex justify-between gap-6">
       <div class="mb-4">
-        <p class="text-textGrayLight text-sub">{{ supTitle }}</p>
-        <h2 class="text-xl font-medium mb-2">{{ title }}</h2>
-        <p class="max-w-[324px] text-textGrayDark text-sm">{{ description }}</p>
+        <p class="text-sub text-textGrayLight">{{ supTitle }}</p>
+        <h2 class="mb-2 text-xl font-medium">{{ title }}</h2>
+        <p class="max-w-[324px] text-sm text-textGrayDark">{{ description }}</p>
       </div>
-      <img class="max-w-20 sm:max-w-10 max-h-20 sm:max-h-10 rounded-lg" :src="image" :alt="title">
+      <img
+        class="max-w-20 sm:max-w-10 max-h-20 rounded-lg sm:max-h-10"
+        :src="image"
+        :alt="title"
+      />
     </div>
     <ul class="mb-4">
       <li v-for="item in featureList" :key="item.text" class="mb-2">
@@ -69,8 +77,12 @@ components: {
       </li>
     </ul>
     <div class="flex items-center gap-2">
-      <SwitcherItem :isActive="subscribed" :count="count" @click.prevent="toggleSubscription" />
-      <p>Уже получает {{countSubscription}} человек</p>
+      <SwitcherItem
+        :is-active="subscribed"
+        :count="count"
+        @click.prevent="toggleSubscription"
+      />
+      <p>Уже получает {{ countSubscription }} человек</p>
     </div>
   </div>
 </template>

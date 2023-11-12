@@ -1,10 +1,9 @@
 <script setup>
-import IconLogo from '@/assets/img/logo.svg?component';
-
+import IconLogo from '@/assets/img/logo.svg?component'
 </script>
 
 <template>
-  <header class="mt-12 mb-6">
+  <header class="mb-6 mt-12">
     <a href="./"><IconLogo /></a>
   </header>
 </template>

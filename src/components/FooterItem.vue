@@ -1,5 +1,5 @@
 <script setup>
-import IconSmile from '@/assets/img/smile.svg?component';
+import IconSmile from '@/assets/img/smile.svg?component'
 </script>
 
 <template>

@@ -1,3 +1,3 @@
-const mobileBreakpoint = 768;
+const mobileBreakpoint = 768
 
-export const isMobile = window.innerWidth < mobileBreakpoint;
+export const isMobile = window.innerWidth < mobileBreakpoint

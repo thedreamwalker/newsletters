@@ -1,11 +1,11 @@
-import { createStore } from 'vuex';
+import { createStore } from 'vuex'
 
 export const mutation = {
-	SET_SUBSCRIPTION: 'SET_SUBSCRIPTION',
+  SET_SUBSCRIPTION: 'SET_SUBSCRIPTION'
 }
 
 const store = createStore({
-  state () {
+  state() {
     return {
       subscription: {
         morning: true,
@@ -16,18 +16,18 @@ const store = createStore({
     }
   },
   getters: {
-    allSubscription: state => !Object.values(state.subscription).includes(false),
-	},
+    allSubscription: state => !Object.values(state.subscription).includes(false)
+  },
   mutations: {
-    SET_SUBSCRIPTION (state, isSubscription) {
-      state.subscription = {...state.subscription , ...isSubscription}
+    SET_SUBSCRIPTION(state, isSubscription) {
+      state.subscription = { ...state.subscription, ...isSubscription }
     }
   },
   actions: {
-		setSubscription: ({commit}, value) => {
+    setSubscription: ({ commit }, value) => {
       commit(mutation.SET_SUBSCRIPTION, value)
     }
-	}
+  }
 })
 
-export { store };
+export { store }
